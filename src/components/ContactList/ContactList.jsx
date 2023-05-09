@@ -1,11 +1,12 @@
 import s from './ContactList.module.css';
-// import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
 import { deleteContact } from 'redux/actions';
 
 const filterContacts = (contacts, filter) => {
-  return contacts.filter(contact => contact.name.includes(filter));
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 };
 
 export default function ContactList() {
@@ -33,6 +34,3 @@ export default function ContactList() {
     </ul>
   );
 }
-// ContactList.propTypes = {
-//   removeContact: PropTypes.func,
-// };
