@@ -1,11 +1,8 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { StartState } from '../const/const';
+import { StartState } from './const';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import { contactsReducer } from './contactsSlice';
 
-// const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-// const contactsInitialState = parsedContacts ? parsedContacts : StartState;
 const initialValue = { contacts: StartState };
 
 const contactsSlice = createSlice({
