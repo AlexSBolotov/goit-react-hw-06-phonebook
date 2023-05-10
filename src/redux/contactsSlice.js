@@ -6,14 +6,15 @@ import storage from 'redux-persist/lib/storage';
 
 // const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
 // const contactsInitialState = parsedContacts ? parsedContacts : StartState;
+const initialValue = { contacts: StartState };
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: StartState,
+  initialState: initialValue,
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.contacts.push(action.payload);
       },
       prepare(name, number) {
         return {
@@ -26,8 +27,10 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const index = state.findIndex(contact => contact.id === action.payload);
-      state.splice(index, 1);
+      const index = state.contacts.findIndex(
+        contact => contact.id === action.payload
+      );
+      state.contacts.splice(index, 1);
     },
   },
 });
